@@ -1,17 +1,21 @@
 <script>
     import coverPhoto from '../images/portfolioCover.jpg';
-    import catPhoto from '../images/cat.jpeg'; 
+    import catPhoto from '../images/cat.jpeg';
+    import unfoldImage from '../images/unfold.jfif'; // Import the new image
+    import blogImage from '../images/blog.png'
 
     const projects = [
         {
-            title: "Project One",
-            description: "An innovative solution to a real-world problem.",
+            title: "Unfold",
+            description: "A Portfolio template for students.",
             link: "https://example.com/project-one",
+            image: unfoldImage, // Add the image property
         },
         {
-            title: "Project Two",
-            description: "A web application that simplifies task management.",
-            link: "https://example.com/project-two",
+            title: "Blog",
+            description: "A blog website for everyone.",
+            link: "https://example.com/project-one",
+            image: blogImage, // Add the image property
         },
     ];
 </script>
@@ -28,18 +32,24 @@
             </div>
         </div>
 
-        <!-- About Section -->
-        <section id="about" class="bg-[#f5f5f5] py-10">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-[#04060f] mb-4 text-center font-playfair">About Me</h2>
-                <p class="text-lg font-sans mb-4 max-w-2xl mx-auto p-4 bg-white rounded-lg shadow-lg">
+       <!-- About Section -->
+<section id="about" class="bg-gradient-to-r  py-10">
+    <div class="mx-auto px-4">
+        <h2 class="text-3xl font-bold text-[#04060f] mb-4 text-center font-playfair">About Me</h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center">
+            <img src={catPhoto} alt="My Cat" class="w-32 h-32 rounded-full border-4 border-[#04060f] shadow-lg mr-4" />
+            <div class="max-w-2xl p-4">
+                <p class="text-lg font-sans mb-4 text-gray-800">
                     I am a dedicated BSIT student with a passion for technology and innovation. My journey has led me to explore various aspects of software development, including web and mobile applications. I thrive on challenges and enjoy creating solutions that enhance user experiences.
                 </p>
-                <p class="text-lg font-sans max-w-2xl mx-auto p-4 bg-white rounded-lg shadow-lg">
-                    When I'm not coding, I love sketching and spending time with my black cat, who inspires my creativity.
+                <p class="text-lg font-sans text-gray-800">
+                    When I'm not coding, I love sketching and spending time with my cat Orin, who inspires my creativity.
                 </p>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
 
         <!-- Skills Section -->
         <section id="skills" class="py-10">
@@ -75,22 +85,23 @@
         </section>
 
         <!-- Projects Section -->
-        <!-- Projects Section -->
-<section id="projects" class="bg-[#f5f5f5] py-10">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl text-center font-bold text-[#04060f] mb-10 font-playfair">My Projects</h2>
-        <div class="flex justify-center gap-8">
-            {#each projects as project}
-                <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 font-sans w-full max-w-md">
-                    <h3 class="text-xl font-semibold text-[#04060f] font-playfair">{project.title}</h3>
-                    <p class="text-gray-600 my-2">{project.description}</p>
-                    <a href={project.link} target="_blank" class="text-blue-600 hover:underline">View Project</a>
+        <section id="projects" class="bg-[#f5f5f5] py-10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl text-center font-bold text-[#04060f] mb-10 font-playfair">My Projects</h2>
+                <div class="flex justify-center gap-8">
+                    {#each projects as project}
+                        <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 font-sans w-full max-w-md">
+                            <h3 class="text-xl font-semibold text-[#04060f] font-playfair">{project.title}</h3>
+                            {#if project.image} <!-- Check if the project has an image -->
+                                <img src={project.image} alt={project.title} class="w-full h-auto mb-4 rounded" />
+                            {/if}
+                            <p class="text-gray-600 my-2">{project.description}</p>
+                            <a href={project.link} target="_blank" class="text-blue-600 hover:underline">View Project</a>
+                        </div>
+                    {/each}
                 </div>
-            {/each}
-        </div>
-    </div>
-</section>
-
+            </div>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="bg-[#f5f5f5] py-10 text-center">
